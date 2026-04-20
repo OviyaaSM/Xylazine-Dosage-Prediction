@@ -1,0 +1,53 @@
+{
+  "models": {
+    "Logistic Regression": {
+      "acc": 0.62,
+      "prec": 0.5891,
+      "rec": 0.7933,
+      "f1": 0.6761,
+      "auc": 0.672
+    },
+    "Random Forest": {
+      "acc": 0.6633,
+      "prec": 0.6219,
+      "rec": 0.8333,
+      "f1": 0.7123,
+      "auc": 0.749
+    },
+    "XGBoost": {
+      "acc": 0.71,
+      "prec": 0.676,
+      "rec": 0.8067,
+      "f1": 0.7356,
+      "auc": 0.7455
+    }
+  },
+  "cross_validation": {
+    "Logistic Regression": {
+      "mean": 0.65,
+      "std": 0.0254
+    },
+    "Random Forest": {
+      "mean": 0.7,
+      "std": 0.0146
+    },
+    "XGBoost": {
+      "mean": 0.7247,
+      "std": 0.0196
+    }
+  },
+  "breed_importance_pct": {
+    "XGBoost": 1.75,
+    "Random_Forest": 1.49
+  },
+  "pk_validation": {
+    "mean_t_half_min": 1974.8,
+    "literature_range_min": "30-60",
+    "greyhound_t_half_min": NaN
+  },
+  "dose_thresholds_mg_kg": {
+    "Small": 0.532,
+    "Medium": 0.554,
+    "Large": 0.605
+  }
+}

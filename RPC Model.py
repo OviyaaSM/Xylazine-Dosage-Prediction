@@ -34,7 +34,7 @@ print("="*65)
 print("  SMART VET DOSE — ML-PK PIPELINE")
 print("="*65)
 
-df = pd.read_csv('/mnt/user-data/uploads/smartvetdose_final.csv')
+df = pd.read_csv('data/smartvetdose_final.csv')
 print(f"\n[DATA] Loaded {len(df)} records, {df.shape[1]} features")
 print(f"[DATA] Label balance — Safe:Unsafe = {df['Safe_Unsafe'].sum()}:{(df['Safe_Unsafe']==0).sum()}")
 
@@ -287,7 +287,7 @@ for idx, (res, col) in enumerate(zip(results, COLORS.values())):
     ax_cm.set_title(f'{short}\nAcc={res["acc"]:.3f}', fontsize=10, fontweight='bold', color=col)
 
 fig1.suptitle('Smart Vet Dose — Classification Results', fontsize=14, fontweight='bold', y=0.98)
-plt.savefig('/home/claude/fig1_metrics_roc_cm.png', dpi=150, bbox_inches='tight')
+plt.savefig('fig1_metrics_roc_cm.png', dpi=150, bbox_inches='tight')
 plt.close()
 print("\n[PLOT] Fig1 saved")
 
@@ -342,7 +342,7 @@ ax_dose.set_ylim(0, 0.95); ax_dose.grid(axis='y', alpha=0.3); ax_dose.set_faceco
 fig2.suptitle('Feature Importance, PK Validation & Breed-Size Dose Thresholds',
               fontsize=13, fontweight='bold')
 plt.tight_layout()
-plt.savefig('/home/claude/fig2_importance_pk.png', dpi=150, bbox_inches='tight')
+plt.savefig('fig2_importance_pk.png', dpi=150, bbox_inches='tight')
 plt.close()
 print("[PLOT] Fig2 saved")
 
@@ -413,7 +413,7 @@ ax_cv.grid(axis='y', alpha=0.3); ax_cv.set_facecolor('#FAFAFA')
 fig3.suptitle('PK C–t Curves, Effective Dose Confidence Bands & Cross-Validation',
               fontsize=13, fontweight='bold')
 plt.tight_layout()
-plt.savefig('/home/claude/fig3_pk_cv.png', dpi=150, bbox_inches='tight')
+plt.savefig('fig3_pk_cv.png', dpi=150, bbox_inches='tight')
 plt.close()
 print("[PLOT] Fig3 saved")
 
@@ -443,7 +443,7 @@ output = {
         'Large':  round(float(safe_by_size.get('Large', 0.65)),3),
     }
 }
-with open('/home/claude/results.json','w') as f:
+with open('results.json','w') as f:
     json.dump(output, f, indent=2)
 
 print("\n" + "="*65)
