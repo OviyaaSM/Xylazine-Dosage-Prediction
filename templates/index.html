@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Vet Dose | Next-Gen AI Engine</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="dynamic-bg">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="grid-overlay"></div>
+    </div>
+
+    <div class="top-nav">
+        <div class="nav-branding">
+            <div class="ai-core-icon">
+                <div class="core-inner"></div>
+            </div>
+            <h1>SMART VET DOSE <span class="version-tag">v2.0</span></h1>
+        </div>
+        <div class="nav-status">
+            <div class="pulse-ring"></div>
+            <span>NEURAL NETWORK SYNCHRONIZED</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="dashboard-wrapper">
+            <!-- Left Side: Input Parameters -->
+            <div class="hologram-panel input-section">
+                <div class="panel-header">
+                    <h2><span class="highlight">01 //</span> BIOMETRIC INPUT</h2>
+                    <div class="decorative-line"></div>
+                </div>
+
+                <form id="dose-form" class="cyber-form">
+                    <div class="form-row full">
+                        <label>SPECIES DESIGNATION</label>
+                        <div class="select-wrapper">
+                            <select id="species" name="species">
+                                <option value="dog">CANINE (DOG)</option>
+                                <option value="cat">FELINE (CAT)</option>
+                                <option value="horse">EQUINE (HORSE)</option>
+                                <option value="cattle">BOVINE (CATTLE)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label>WEIGHT</label>
+                            <div class="input-container">
+                                <input type="number" id="weight" value="20.5" step="0.1" required>
+                                <span class="unit-tag">kg</span>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>AGE</label>
+                            <div class="input-container">
+                                <input type="number" id="age" value="5" step="0.1" required>
+                                <span class="unit-tag">YRS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label>ERYTHROCYTES (RBC)</label>
+                            <div class="input-container">
+                                <input type="number" id="rbc" value="6.5" step="0.1" required>
+                                <span class="unit-tag">M/mcL</span>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>HEMOGLOBIN (HB)</label>
+                            <div class="input-container">
+                                <input type="number" id="hb" value="14.2" step="0.1" required>
+                                <span class="unit-tag">g/dL</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label>CREATININE</label>
+                            <div class="input-container">
+                                <input type="number" id="creatinine" value="1.0" step="0.01" required>
+                                <span class="unit-tag">mg/dL</span>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>GLUCOSE</label>
+                            <div class="input-container">
+                                <input type="number" id="glucose" value="105" step="1" required>
+                                <span class="unit-tag">mg/dL</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-container">
+                        <button type="submit" class="cyber-button" id="calculate-btn">
+                            <span class="btn-text">INITIALIZE ML SEQUENCE</span>
+                            <span class="btn-glitch"></span>
+                        </button>
+                        <div class="ml-confidence">
+                            <div class="conf-bar-bg">
+                                <div class="conf-bar-fill"></div>
+                            </div>
+                            <span>RF ENSEMBLE [92% ACCURACY]</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Right Side: Analytics & Vis -->
+            <div class="hologram-panel results-section">
+                <div class="scan-overlay" id="scan-fx"></div>
+
+                <div class="panel-header">
+                    <h2><span class="highlight">02 //</span> PHARMACOKINETIC TELEMETRY</h2>
+                    <div class="decorative-line"></div>
+                </div>
+
+                <div class="results-layout idle" id="results-display">
+                    <!-- Idle State -->
+                    <div class="idle-state">
+                        <div class="radar-scan"></div>
+                        <p>AWAITING BIOMETRIC UPLOAD...</p>
+                    </div>
+
+                    <!-- Active Data State -->
+                    <div class="active-state">
+                        <div class="telemetry-grid">
+                            <div class="telemetry-card hero">
+                                <div class="card-corner tl"></div>
+                                <div class="card-corner tr"></div>
+                                <div class="card-corner bl"></div>
+                                <div class="card-corner br"></div>
+                                <h4>OPTIMAL PRESCRIBED DOSE</h4>
+                                <div class="focus-value">
+                                    <span id="optimal-dose" class="counter">0.00</span>
+                                    <span class="focus-unit">mg/kg</span>
+                                </div>
+                                <div class="badge" id="status-flag">COMPUTING...</div>
+                            </div>
+
+                            <div class="telemetry-sub-grid">
+                                <div class="telemetry-card">
+                                    <h4>TOLERANCE INTERVAL</h4>
+                                    <div class="sub-val">
+                                        <span id="safe-lower">0.00</span> - <span id="safe-upper">0.00</span>
+                                    </div>
+                                    <div class="micro-label">SAFE DOSE (95% CI)</div>
+                                </div>
+                                <div class="telemetry-card">
+                                    <h4>SYSTEM CONFIDENCE</h4>
+                                    <div class="sub-val highlight-val">
+                                        <span id="max-prob" class="counter">0.0</span>%
+                                    </div>
+                                    <div class="micro-label">PEAK SAFETY PROB.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cyber-chart-wrapper">
+                            <div class="chart-corners tl"></div>
+                            <div class="chart-corners tr"></div>
+                            <div class="chart-corners bl"></div>
+                            <div class="chart-corners br"></div>
+                            <div class="chart-header">
+                                <span>DOSE / PROBABILITY VECTOR</span>
+                                <span>XYLAZINE METABOLISM</span>
+                            </div>
+                            <div class="canvas-container">
+                                <canvas id="doseChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+
+</html>
